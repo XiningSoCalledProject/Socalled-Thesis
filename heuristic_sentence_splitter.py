@@ -1,33 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[1]:
+# NOTE: this code is taken directly from clinical BERT github repository
+# https://github.com/EmilyAlsentzer/clinicalBERT/blob/master/lm_pretraining/heuristic_tokenize.py
 
 
 import sys
 import re, nltk
 import os
 
-
-# In[2]:
-
-
 def strip(s):   
     return s.strip()
-
-
-# In[3]:
-
 
 def is_inline_title(text):
     m = re.search('^([a-zA-Z ]+:) ', text)
     if not m:
         return False
     return is_title(m.groups()[0])
-
-
-# In[4]:
-
 
 stopwords = set(['of', 'on', 'or'])
 def is_title(text):
@@ -50,10 +38,6 @@ def is_title(text):
 
     # optionally: could assert that it is less than 6 tokens
     return True
-
-
-# In[ ]:
-
 
 def sent_tokenize_rules(text):
 
